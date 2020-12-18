@@ -1,9 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
+import { RecipeContext } from "../contexts/RecipeContext";
 
-function Recipe() {
+
+const Recipe = () => {
+    const { current  } = useContext(RecipeContext);
+
+    console.log("current", current);
     return(
         <div>
-            <h2>Recipe</h2>
+            <img className="recipePic" src={current.strMealThumb} alt={current.strMeal}/>
+            <h3>{current.strMeal}</h3>
+            <h3>Directions</h3>
+            <p>{current.strInstructions}</p>
         </div>
     )
 }
