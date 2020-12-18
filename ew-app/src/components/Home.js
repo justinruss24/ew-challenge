@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import logo from "../../src/images/logo.png";
 import "../App.scss";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch, faSpinner } from '@fortawesome/free-solid-svg-icons'
+import Recipe from "../components/Recipe";
 
 
 const Home = () => {
     const [recipes, setRecipes] = useState();
-
+    const [redirect, setRedirect] = useState(false);
     const holdRecipes = [];
 
     const getRecipes = async () => {
@@ -29,8 +32,6 @@ const Home = () => {
             holdRecipes.push(obj4.data.meals[0])
             holdRecipes.push(obj5.data.meals[0])
             setRecipes(holdRecipes)
-            console.log("recipes", recipes)
-            console.log("recipes", holdRecipes)
         }))
         .catch(err => {
             console.log(err)
@@ -50,19 +51,22 @@ const Home = () => {
                 </div>  
             </header>
             <div className="title">
-                <h2>Recipe of the Day</h2>
+                <h4>Recipes of the Day</h4>
             </div>
             <div className="recipes">
-                {(recipes === undefined) ? <h2>Loading</h2> :
+                {(recipes === undefined) ? <FontAwesomeIcon icon={faSpinner} size="3x" /> :
                 recipes.map(recipe => {
                     return (
                     <div className="recipeList">
-                        <h4>{recipe.strMeal}</h4>
-                        <img id="recipePic" src={recipe.strMealThumb} alt='fix' />
+                        <h3>
+                            {recipe.strMeal}
+                        </h3>
+                        <img id="recipePic" src={recipe.strMealThumb} alt={recipe.strMeal} />
                     </div>
                     )
                 })}
             </div>
+            <FontAwesomeIcon id="searchIcon" icon={faSearch} size="3x" />
         </div>
     )
 }
