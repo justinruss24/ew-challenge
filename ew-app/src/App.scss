@@ -1,0 +1,55 @@
+header {
+  background-image: url("./images/home-background.jpg");
+  object-fit: scale-down;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.logoDiv {
+  display: flex;
+  margin: 4em 0%;
+  object-fit: contain;
+
+}
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.recipes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.recipeList {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#recipePic {
+  display: flex;
+  width: 40%;
+  object-fit: contain;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
