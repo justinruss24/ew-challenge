@@ -54,8 +54,8 @@ function App() {
   }
 
   useEffect(() => {
-    {(val === '') ? getRecipes() : searchRecipes();}
-  }, [val])
+    getRecipes();
+  }, [])
 
 
   return (
