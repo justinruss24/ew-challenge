@@ -9,7 +9,11 @@ import Item from "./Item";
 
 const Home = () => {
 
-    const { recipes } = useContext(ListContext);
+    const { recipes, val, setVal } = useContext(ListContext);
+    const handleChange = event => {
+        setVal(event.target.value)
+    }
+    
     return(
         <div>
             <header>
@@ -17,6 +21,14 @@ const Home = () => {
                     <img src={logo} alt="logo" />
                 </div>  
             </header>
+            <div className="searchbar">
+                <input 
+                    id="search"
+                    value={val}
+                    placeholder={'search for a meal'}
+                    onChange={handleChange}
+                />
+            </div>
             <div className="title">
                 <h4>Recipes of the Day</h4>
             </div>

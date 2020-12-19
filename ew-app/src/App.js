@@ -10,6 +10,7 @@ import { ListContext } from "../src/contexts/ListContext";
 function App() {
   const [recipes, setRecipes] = useState();
   const [current, setCurrent] = useState();
+  const [val, setVal] = useState('');
   const holdRecipes = [];
 
   const getRecipes = async () => {
@@ -37,18 +38,30 @@ function App() {
         console.log(err)
       })
   }
+  const searchRecipes = async () => {
+    axios
+    .get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${val}`)
+    .then(res => {
+      console.log(res)
+      setVal(res.data.meals)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
   const fullRecipe = (recipe) => {
     setCurrent(recipe)
   }
 
   useEffect(() => {
-    getRecipes();
-  }, [])
+    {(val === '') ? getRecipes() : searchRecipes();}
+  }, [val])
+
 
   return (
     <div>
       <RecipeContext.Provider value={{recipes, current, fullRecipe}}>
-        <ListContext.Provider value={{recipes, getRecipes, holdRecipes}} >
+        <ListContext.Provider value={{recipes, getRecipes, holdRecipes, val, setVal, searchRecipes}} >
           <Route exact path="/">
             <Home />
           </Route>

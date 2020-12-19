@@ -66,5 +66,35 @@ h4 {
     bottom:0;
     margin: 3%;
   }
-  
+}
+#search{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2%;
+  width: 25%;
+}
+.searchbar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media(max-width: 800px) {
+    display: none;
+  }
+}
+#backArrow {
+  display: flex;
+  color: red;
+  position: fixed;
+  left: 0;
+  top: 0;
+  margin: 3%;
+}
+
+.recipeTitle {
+  text-decoration: none;
+  color: black;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 2%;
 }
