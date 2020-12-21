@@ -28,6 +28,7 @@ const Search = () => {
                 </div>
             </header>
             <div className="searchbar">
+                <h4 className="title">Search Results</h4>
                 <form onSubmit={handleSubmit}>
                     <input
                         id="search"
