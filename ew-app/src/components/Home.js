@@ -1,20 +1,16 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import logo from "../../src/images/logo.png";
 import "../App.scss";
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { ListContext } from "../contexts/ListContext";
 import Item from "./Item";
-import Search from "./Search";
 
 
 const Home = () => {
 
-    const { recipes, searchResults } = useContext(ListContext);
-    // useEffect(() => {
-    //     console.log("isSearch", isSearch)
-    // }, [isSearch])
+    const { recipes } = useContext(ListContext);
     
     return(
         <div>
