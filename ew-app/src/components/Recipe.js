@@ -12,11 +12,14 @@ const Recipe = () => {
     console.log("current", current);
     return(
         <div>
-            <FontAwesomeIcon id="backArrow" size="3x" icon={faArrowLeft} onClick={() => history.goBack()}/>
+            <FontAwesomeIcon className="backArrow" size="3x" icon={faArrowLeft} onClick={() => history.goBack()}/>
             <img className="recipePic" src={current.strMealThumb} alt={current.strMeal}/>
             <h3>{current.strMeal}</h3>
+                <p>{current.strMeasure1} {' '} {current.strIngredient1}</p>
+                <p>{current.strMeasure2} {' '} {current.strIngredient2}</p>
+                <p>{current.strMeasure3} {' '} {current.strIngredient3}</p>
             <h3>Directions</h3>
-            <p>{current.strInstructions}</p>
+                <p>{current.strInstructions}</p>
         </div>
     )
 }

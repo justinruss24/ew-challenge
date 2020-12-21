@@ -57,15 +57,12 @@ h4 {
   font-style: italic;
 }
 #searchIcon {
-  display: none;
-  @media(max-width: 800px) {
     display: flex;
     color: red;
     position:fixed;
     right:0;
     bottom:0;
     margin: 3%;
-  }
 }
 #search{
   display: flex;
@@ -79,12 +76,9 @@ h4 {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  @media(max-width: 800px) {
-    display: none;
-  }
 }
 
-#backArrow {
+.backArrow {
   display: flex;
   color: red;
   position: fixed;
