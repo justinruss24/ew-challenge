@@ -5,14 +5,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { ListContext } from "../contexts/ListContext";
 import Item from "./Item";
+import Search from "./Search";
 
 
 const Home = () => {
 
-    const { recipes, val, setVal } = useContext(ListContext);
-    const handleChange = event => {
-        setVal(event.target.value)
-    }
+    const { recipes, searchResults } = useContext(ListContext);
     
     return(
         <div>
@@ -21,17 +19,11 @@ const Home = () => {
                     <img src={logo} alt="logo" />
                 </div>  
             </header>
-            <div className="searchbar">
-                <input 
-                    id="search"
-                    value={val}
-                    placeholder={'search for a meal'}
-                    onChange={handleChange}
-                />
-            </div>
+            <Search />
             <div className="title">
                 <h4>Recipes of the Day</h4>
             </div>
+            {/* if searchResults.length === 0 then render whats already there. if not, render the search results in its space */}
             {(recipes === undefined) ? <FontAwesomeIcon icon={faSpinner} size="3x" /> :
             recipes.map(recipe => {
                 return (

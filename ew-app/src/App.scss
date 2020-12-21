@@ -72,16 +72,18 @@ h4 {
   justify-content: center;
   align-items: center;
   margin: 2%;
-  width: 25%;
+  width: 100%;
 }
 .searchbar{
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   @media(max-width: 800px) {
     display: none;
   }
 }
+
 #backArrow {
   display: flex;
   color: red;

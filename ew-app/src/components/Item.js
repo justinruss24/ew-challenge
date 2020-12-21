@@ -4,6 +4,7 @@ import { RecipeContext } from "../contexts/RecipeContext";
 
 const Item = props => {
     const { fullRecipe } = useContext(RecipeContext);
+    
     return(
         
         <div className="recipes">

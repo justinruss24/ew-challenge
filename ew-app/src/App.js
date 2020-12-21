@@ -7,11 +7,15 @@ import Recipe from "../src/components/Recipe";
 import { RecipeContext } from "../src/contexts/RecipeContext";
 import { ListContext } from "../src/contexts/ListContext";
 
+
 function App() {
   const [recipes, setRecipes] = useState();
-  const [current, setCurrent] = useState();
   const [val, setVal] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
   const holdRecipes = [];
+  const holdSearch = [];
+  const [current, setCurrent] = useState();
+  const [searched, setSearched] = useState(false);
 
   const getRecipes = async () => {
     axios.all([
@@ -38,12 +42,16 @@ function App() {
         console.log(err)
       })
   }
-  const searchRecipes = async () => {
+  const searchRecipes = (value) => {
     axios
-    .get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${val}`)
+    .get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${value}`)
     .then(res => {
-      console.log(res)
-      setVal(res.data.meals)
+      const searchMeals = res.data.meals
+      searchMeals.map(meal => {
+        holdSearch.push(meal)
+      })
+      setSearchResults(holdSearch)
+      console.log(searchResults)
     })
     .catch(err => {
       console.log(err)
@@ -52,7 +60,6 @@ function App() {
   const fullRecipe = (recipe) => {
     setCurrent(recipe)
   }
-
   useEffect(() => {
     getRecipes();
   }, [])
@@ -60,7 +67,7 @@ function App() {
 
   return (
     <div>
-      <RecipeContext.Provider value={{recipes, current, fullRecipe}}>
+      <RecipeContext.Provider value={{ recipes, current, fullRecipe, searchResults }}>
         <ListContext.Provider value={{recipes, getRecipes, holdRecipes, val, setVal, searchRecipes}} >
           <Route exact path="/">
             <Home />

@@ -6,7 +6,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 
 const Recipe = () => {
-    const { current  } = useContext(RecipeContext);
+    const { current } = useContext(RecipeContext);
     let history = useHistory();
 
     console.log("current", current);
